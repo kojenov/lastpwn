@@ -1,4 +1,4 @@
-# LastPwn ';-- have my LastPass password been pwned?
+# LastPwn ';-- have my LastPass passwords been pwned?
 
 You can check single passwords using haveibeenpwned.com's [web interface](https://haveibeenpwned.com/Passwords) or its awesome [REST API](https://haveibeenpwned.com/API/v2#PwnedPasswords)
 
