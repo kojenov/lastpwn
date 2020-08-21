@@ -6,15 +6,23 @@ But how can you check all my LastPass passwords against HIBP? There is [this too
 
 So can you do it offline? Yes. Download the [pwned passwords list](https://haveibeenpwned.com/Passwords) (make sure to get SHA1 one ordered by hash), unpack the file, and ~~grep through it~~ run this tool.
 
-If you are on Linux, create a directory in /dev/shm to store LastPass exported CSV file in RAM rather than on the disk:
+## Security
 
+The LastPass exported CSV file contains your plaintext passwords. For security, download it to RAM rather than disk.
+
+If you are on Linux, create a directory in /dev/shm:
 ```
 mkdir /dev/shm/pws
 ```
 
-Go to LastPass → Account Options → Advanced → Export → LastPass CSV File and save it as e.g. /dev/shm/pws/lastpass.csv
+If you are on Mac, create a RAM disk:
+```
+diskutil erasevolume HFS+ "pws" `hdiutil attach -nomount ram://2048`
+```
 
-And then:
+Go to LastPass → Account Options → Advanced → Export → LastPass CSV File and save it as e.g. `/dev/shm/pws/lastpass.csv`
+
+## Running
 ```
 python3 lastpwn.py /dev/shm/pws/lastpass.csv <path-to>/pwned-passwords-sha1-ordered-by-hash-v4.txt
 ```
