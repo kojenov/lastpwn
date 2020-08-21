@@ -3,10 +3,11 @@ import hashlib
 import sys
 import os
 import csv
-
+import time
 
 def hibpsearch(csvname, hibpname):
 
+    startTime = time.perf_counter()
     # build a dictionary of password hashes from the CSV
     pwdict = {}
     with open(csvname, newline='') as csvfile:
@@ -18,7 +19,7 @@ def hibpsearch(csvname, hibpname):
 
     # sort the hashes
     myhashes = sorted(pwdict.keys())
-    
+
     # walk through the HIBP list and find matches
     with open(hibpname) as hibpfile:
         hibphash = hibpfile.readline()[:40]
@@ -35,6 +36,9 @@ def hibpsearch(csvname, hibpname):
                     print(pwdict[myhashes[k]])
                     hibphash = hibpfile.readline()[:40]
                     k = k + 1
+
+    endTime = time.perf_counter()
+    print(f"Scanned {len(myhashes)} passwords in {endTime - startTime:0.4f} seconds")
 
 # do it!
 hibpsearch(sys.argv[1], sys.argv[2])
