@@ -4,7 +4,7 @@ You can check single passwords using haveibeenpwned.com's [web interface](https:
 
 But how can you check all my LastPass passwords against HIBP? There is [this tool](https://gist.github.com/Tenzer/b8aa3cfa09a7e1396a0661de6bf35633) which works pretty well but it won't work for those of us who are paranoid and don't like the idea of revealing even 5 hex digits of their precious password hashes.
 
-So can you do it offline? Yes. Download the [pwned passwords list](https://haveibeenpwned.com/Passwords) (make sure to get SHA1 one ordered by hash), unpack the file, and ~~grep through it~~ run this tool.
+So can you do it offline? Yes. Download the [pwned passwords list](https://haveibeenpwned.com/Passwords) (SHA1 ordered by hash), unpack the file, and ~~grep through it~~ run this tool.
 
 ## Security
 
@@ -24,7 +24,7 @@ Go to LastPass → Account Options → Advanced → Export → LastPass CSV File
 
 ## Running
 ```
-python3 lastpwn.py /dev/shm/pws/lastpass.csv <path-to>/pwned-passwords-sha1-ordered-by-hash-v4.txt
+python3 lastpwn.py /dev/shm/pws/lastpass.csv <path-to>/pwned-passwords-sha1-ordered-by-hash-v7.txt
 ```
 
 ## Performance
